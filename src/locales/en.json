@@ -1,0 +1,6 @@
+{
+  "main": {
+    "welcome": "Hello from {company}!",
+    "new_messages": "no messages | one message | {n} messages"
+  }
+}
