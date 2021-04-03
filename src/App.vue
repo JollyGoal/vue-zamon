@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link :to="$i18nRoute({name: 'Home'})">Home</router-link> |
+    <router-link :to="$i18nRoute({name: 'About'})">About</router-link>
   </div>
   <router-view/>
   <button @click="switchLanguage">change </button>
@@ -32,6 +32,8 @@
 <script>
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { SUPPORT_LOCALES, i18n } from './i18n'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'HelloI18n',
@@ -41,8 +43,23 @@ export default defineComponent({
       useScope: 'global'
     })
 
+    const router = useRouter()
+    // const route = useRoute()
+
     const switchLanguage = async () => {
-      locale.value = locale.value === 'en' ? 'ru' : 'en'
+      for (const lang in SUPPORT_LOCALES) {
+        if (SUPPORT_LOCALES[lang] === i18n.global.locale.value) {
+          let newLangId = parseInt(lang) + 1
+          if (newLangId >= SUPPORT_LOCALES.length) {
+            newLangId = 0
+          }
+          // const locale = SUPPORT_LOCALES[newLangId]
+          const to = router.resolve({
+            params: { locale: SUPPORT_LOCALES[newLangId] }
+          })
+          router.push(to.path)
+        }
+      }
     }
 
     return { t, d, n, tm, locale, switchLanguage }
