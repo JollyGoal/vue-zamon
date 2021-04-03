@@ -1,0 +1,6 @@
+{
+    "main": {
+      "welcome": "Salom {company}!",
+      "new_messages": "moshina yo'q | {n} moshin | {n} moshina"
+    }
+  }

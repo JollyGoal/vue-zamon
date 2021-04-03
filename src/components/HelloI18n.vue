@@ -1,5 +1,6 @@
 <template>
   <p>{{ i18n.t('main.welcome', {company: "Radiant"}) }}</p>
+  <p>{{ $t('main.welcome', {company: "Radiant"}) }}</p>
   <p>{{ i18n.t('main.new_messages', {n: 10}) }}</p>
   <p>{{ i18n.d(now, 'long') }}</p>
   <p>{{ i18n.n(money, 'currency') }}</p>
@@ -8,6 +9,8 @@
   <p>{{ i18n.t('main.new_messages', 4) }}</p>
   <p>{{ i18n.t('main.new_messages', 12) }}</p>
   <p>{{ i18n.t('main.new_messages', 21) }}</p>
+  <p>{{ $t('main.new_messages', 21) }}</p>
+  <p>{{ i18n.t('hello', {company: "dsdas"}) }}</p>
 </template>
 
 <script>
@@ -19,7 +22,7 @@ export default defineComponent({
   setup () {
     const i18n = useI18n({
       // inheritLocale: true,
-      // useScope: 'local'
+      useScope: 'local'
     })
     const now = ref(new Date())
 
