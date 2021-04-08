@@ -8,8 +8,15 @@
   body{
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: "Century Gothic", sans-serif;
   }
+    @font-face {
+      font-family: 'Old London';
+      src: url('assets/fonts/oldLondon/OldLondon.ttf') format('truetype');
+      src: url('assets/fonts/oldLondon/OldLondonAlternate.ttf') format('truetype');
+      src: url('assets/fonts/oldLondon/Olondon_.otf');
+      src: url('assets/fonts/oldLondon/Olondona.otf');
+    }
 </style>
 <script>
 import { defineComponent } from 'vue'
