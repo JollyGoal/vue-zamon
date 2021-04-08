@@ -1,42 +1,34 @@
 <template>
-  <div id="nav">
-    <router-link :to="$i18nRoute({name: 'Home'})">Home</router-link> |
-    <router-link :to="$i18nRoute({name: 'About'})">About</router-link>
-  </div>
+  <Header/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"/>
   <router-view/>
-  <button @click="switchLanguage">change </button>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  body{
+    margin: 0;
+    padding: 0;
+    font-family: "Century Gothic", sans-serif;
   }
-}
+    @font-face {
+      font-family: 'Old London';
+      src: url('assets/fonts/oldLondon/OldLondon.ttf') format('truetype');
+      src: url('assets/fonts/oldLondon/OldLondonAlternate.ttf') format('truetype');
+      src: url('assets/fonts/oldLondon/Olondon_.otf');
+      src: url('assets/fonts/oldLondon/Olondona.otf');
+    }
 </style>
 <script>
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { SUPPORT_LOCALES, i18n } from './i18n'
 import { useRouter } from 'vue-router'
-
+import Header from './components/Header'
 export default defineComponent({
   name: 'HelloI18n',
+  components: {
+    Header
+  },
   setup () {
     const { t, d, n, tm, locale } = useI18n({
       // inheritLocale: true,
